@@ -1,9 +1,9 @@
--- Poluchaem dostup k periferiyam
+-- Getting access to peripherals
 local chest = peripheral.wrap("minecraft:chest_2")
 local drawer = peripheral.wrap("storagedrawers:standard_drawers_1_2")
 local monitor = peripheral.wrap("top")
 
--- Poluchaem maksimalnuyu vmestimost sunduka
+-- Getting the maximum capacity of the chest
 local total1 = 0
 local total2 = 0
 
@@ -15,7 +15,7 @@ for i = 1, drawer.size() do
   total2 = total2 + drawer.size(i)
 end
 
--- Poluchaem tekuschee kolichestvo predmetov
+-- Getting the current number of items
 
 local current1 = 0
 for i = 1, chest.size() do
@@ -33,16 +33,14 @@ for i = 1, drawer.size() do
   end
 end
 
--- Vivodim informatsiyu na monitor
+-- Displaying information on the monitor
+monitor.setTextScale(0.5)
 monitor.clear()
 monitor.setCursorPos(1, 1)
-monitor.write("Maksimalnaya vmestimost sunduka: " .. total1)
+monitor.write("Maximum chest capacity: " .. total1)
 monitor.setCursorPos(1, 2)
-monitor.write("Текущее количество предметов в сундуке: " .. current1)
+monitor.write("Current number of items in the chest: " .. current1)
 monitor.setCursorPos(1, 3)
-monitor.write("Maksimalnaya vmestimost yashchika: " .. total2)
+monitor.write("Maximum drawer capacity: " .. total2)
 monitor.setCursorPos(1, 4)
-monitor.write("Текущее количество предметов в ящике: " .. current2)
-
-
-
+monitor.write("Current number of items in the drawer: " .. current2)
