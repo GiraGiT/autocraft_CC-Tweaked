@@ -16,15 +16,21 @@ for i = 1, drawer.size() do
 end
 
 -- Poluchaem tekuschee kolichestvo predmetov
-local current1 = 0
-local current2 = 0
 
+local current1 = 0
 for i = 1, chest.size() do
-  current1 = current1 + chest.getItemCount(i)
+  local item = chest.getItemDetail(i)
+  if item then
+    current1 = current1 + item.count
+  end
 end
 
+local current2 = 0
 for i = 1, drawer.size() do
-  current2 = current2 + drawer.getItemCount(i)
+  local item = drawer.getItemDetail(i)
+  if item then
+    current2 = current2 + item.count
+  end
 end
 
 -- Vivodim informatsiyu na monitor
@@ -32,12 +38,11 @@ monitor.clear()
 monitor.setCursorPos(1, 1)
 monitor.write("Maksimalnaya vmestimost sunduka: " .. total1)
 monitor.setCursorPos(1, 2)
-monitor.write("Tekuschee kolichestvo predmetov v sunduke: " .. current1)
+monitor.write("Текущее количество предметов в сундуке: " .. current1)
 monitor.setCursorPos(1, 3)
-monitor.write("Sunduk zapolnen na: " .. (current1 / total1) * 100 .. "%")
-monitor.setCursorPos(1, 5)
 monitor.write("Maksimalnaya vmestimost yashchika: " .. total2)
-monitor.setCursorPos(1, 6)
-monitor.write("Tekuschee kolichestvo predmetov v yashchike: " .. current2)
-monitor.setCursorPos(1, 7)
-monitor.write("Yashchik zapolnen na: " .. (current2 / total2) * 100 .. "%")
+monitor.setCursorPos(1, 4)
+monitor.write("Текущее количество предметов в ящике: " .. current2)
+
+
+
