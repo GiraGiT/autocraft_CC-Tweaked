@@ -8,16 +8,18 @@ local total1 = 0
 local total2 = 0
 
 for i = 1, chest.size() do
-  total1 = total1 + chest.size(i)
+  total1 = total1 + chest.getItemLimit(i)
 end
 
 for i = 1, drawer.size() do
-  total2 = total2 + drawer.size(i)
+  total2 = total2 + drawer.getItemLimit(i) -- Исправлено здесь
 end
 
 -- Getting the current number of items
 
 local current1 = 0
+local current2 = 0
+
 for i = 1, chest.size() do
   local item = chest.getItemDetail(i)
   if item then
@@ -25,7 +27,6 @@ for i = 1, chest.size() do
   end
 end
 
-local current2 = 0
 for i = 1, drawer.size() do
   local item = drawer.getItemDetail(i)
   if item then
