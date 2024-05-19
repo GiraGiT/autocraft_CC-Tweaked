@@ -1,6 +1,6 @@
 -- Poluchaem dostup k periferiyam
-local chest = peripheral.wrap("minecraft:chest_1")
-local drawer = peripheral.wrap("storagedrawers:standard_drawers_1_1")
+local chest = peripheral.wrap("minecraft:chest_2")
+local drawer = peripheral.wrap("storagedrawers:standard_drawers_1_2")
 local monitor = peripheral.wrap("top")
 
 -- Poluchaem maksimalnuyu vmestimost sunduka
@@ -8,11 +8,11 @@ local total1 = 0
 local total2 = 0
 
 for i = 1, chest.size() do
-  total1 = total1 + chest.getItemLimit(i)
+  total1 = total1 + chest.size(i)
 end
 
 for i = 1, drawer.size() do
-  total2 = total2 + drawer.getItemLimit(i)
+  total2 = total2 + drawer.size(i)
 end
 
 -- Poluchaem tekuschee kolichestvo predmetov
