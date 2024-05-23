@@ -12,7 +12,11 @@ while true do
   local peripherals = peripheral.getNames()
   local monitor = peripheral.wrap("top")
   
-  for _, name in ipairs(peripherals) do
+  -- Clear the monitor at the start of each cycle
+  monitor.setTextScale(0.5)
+  monitor.clear()
+  
+  for index, name in ipairs(peripherals) do
     local storage = peripheral.wrap(name)
     
     -- Check if the peripheral has the necessary functions
@@ -36,12 +40,10 @@ while true do
       local shortName = shortenName(name)
 
       -- Displaying information on the monitor
-      monitor.setTextScale(0.5)
-      monitor.clear()
-      monitor.setCursorPos(1, 1)
-      monitor.write(shortName .. " max: " .. total)
-      monitor.setCursorPos(1, 2)
-      monitor.write(shortName .. " cur: " .. current)
+      monitor.setCursorPos(1, index * 2 - 1)
+      monitor.write(tostring(index) .. ". " .. shortName .. " max: " .. total)
+      monitor.setCursorPos(1, index * 2)
+      monitor.write(tostring(index) .. ". " .. shortName .. " cur: " .. current)
     end
   end
 
