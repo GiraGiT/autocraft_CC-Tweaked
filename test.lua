@@ -67,7 +67,7 @@ while true do
       -- Display the fill percentage
       monitor.setCursorPos(1, index * 2)
       monitor.setTextColor(colors.white)
-      monitor.write("Fill: " .. tostring(math.floor(fillRatio * 100)) .. "/100%")
+      monitor.write(tostring(math.floor(fillRatio * 100)) .. "/100%")
     end
   end
 
