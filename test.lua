@@ -43,11 +43,23 @@ while true do
       -- Shorten the name
       local shortName = shortenName(name)
 
+      -- Calculate the fill ratio
+      local fillRatio = current / total
+
+      -- Create the fill bar
+      local fillBarLength = 20
+      local filledLength = math.floor(fillRatio * fillBarLength)
+
       -- Displaying information on the monitor
       monitor.setCursorPos(1, index * 2 - 1)
-      monitor.write(tostring(index) .. ". " .. shortName .. " max: " .. total)
-      monitor.setCursorPos(1, index * 2)
-      monitor.write(tostring(index) .. ". " .. shortName .. " cur: " .. current)
+      monitor.setTextColor(colors.white)
+      monitor.write(tostring(index) .. ". " .. shortName .. ": ")
+      
+      monitor.setTextColor(colors.green)
+      monitor.write(string.rep(" ", filledLength))
+      
+      monitor.setTextColor(colors.gray)
+      monitor.write(string.rep(" ", fillBarLength - filledLength))
     end
   end
 
