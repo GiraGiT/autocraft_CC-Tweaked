@@ -55,11 +55,14 @@ while true do
       monitor.setTextColor(colors.white)
       monitor.write(tostring(index) .. ". " .. shortName .. ": ")
       
-      monitor.setTextColor(colors.green)
+      monitor.setBackgroundColor(colors.green)
       monitor.write(string.rep(" ", filledLength))
       
-      monitor.setTextColor(colors.gray)
+      monitor.setBackgroundColor(colors.gray)
       monitor.write(string.rep(" ", fillBarLength - filledLength))
+      
+      -- Reset the background color
+      monitor.setBackgroundColor(colors.black)
     end
   end
 
