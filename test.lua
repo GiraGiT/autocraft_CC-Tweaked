@@ -12,9 +12,13 @@ while true do
   local peripherals = peripheral.getNames()
   local monitor = peripheral.wrap("top")
   
-  -- Clear the monitor at the start of each cycle
-  monitor.setTextScale(0.5)
-  monitor.clear()
+  -- Only clear the monitor if the number of peripherals has changed
+  local currentPeripherals = #peripherals
+  if currentPeripherals ~= previousPeripherals then
+    monitor.setTextScale(0.5)
+    monitor.clear()
+    previousPeripherals = currentPeripherals
+  end
   
   for index, name in ipairs(peripherals) do
     local storage = peripheral.wrap(name)
