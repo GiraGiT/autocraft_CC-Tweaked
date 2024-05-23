@@ -1,3 +1,12 @@
+-- Function to shorten the name
+local function shortenName(name)
+  local shortName = ""
+  for word in string.gmatch(name, "%w+") do
+    shortName = shortName .. string.sub(word, 1, 1)
+  end
+  return shortName
+end
+
 while true do
   -- Getting access to peripherals
   local peripherals = peripheral.getNames()
@@ -23,13 +32,16 @@ while true do
         end
       end
 
+      -- Shorten the name
+      local shortName = shortenName(name)
+
       -- Displaying information on the monitor
       monitor.setTextScale(0.5)
       monitor.clear()
       monitor.setCursorPos(1, 1)
-      monitor.write("Maximum " .. name .. " capacity: " .. total)
+      monitor.write(shortName .. " max: " .. total)
       monitor.setCursorPos(1, 2)
-      monitor.write("Current number of items in the " .. name .. ": " .. current)
+      monitor.write(shortName .. " cur: " .. current)
     end
   end
 
