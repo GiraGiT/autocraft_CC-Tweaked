@@ -59,13 +59,13 @@ while true do
       monitor.write(string.rep(" ", filledLength))
       
       monitor.setBackgroundColor(colors.gray)
-      monitor.write(string.rep(" ", fillBarLength - filledLength))
+      monitor.write(string.rep(" ", fillBarLength - filledLength) .. " ")
       
       -- Reset the background color
       monitor.setBackgroundColor(colors.black)
       
       -- Display the fill percentage
-      monitor.setCursorPos(fillBarLength + 5, index * 2 - 1)
+      monitor.setCursorPos(fillBarLength + 6, index * 2 - 1)
       monitor.setTextColor(colors.white)
       monitor.write(tostring(math.floor(fillRatio * 100)) .. "/100%")
     end
